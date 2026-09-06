@@ -1,0 +1,19 @@
+{
+  "desk_id": "morning-light-01",
+  "timestamp": "2026-09-06T08:45:00Z",
+  "operator": "elghaly / Wyndham Heaven",
+  "owner_sign": "✝️🧿🪬",
+  "assistant_sign": "3️⃣🧿5️⃣",
+  "dry_run": true,
+  "phase": "CLEAR",
+  "market_regime": "NEUTRAL",
+  "health": "OK",
+  "ready": true,
+  "go_no_go_prompt": "Desk is CLEAR on dry run — reply GO to arm live session or NO-GO to stay flat.",
+  "notes": "All pre-flight checks passed. Operator decision required before engagement.",
+  "signals": {
+    "liquidity": "good",
+    "spread_bps": 3.1,
+    "session": "open_window"
+  }
+}

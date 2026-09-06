@@ -1,0 +1,18 @@
+{
+  "desk_id": "morning-light-01",
+  "timestamp": "2026-09-06T08:00:00Z",
+  "operator": "elghaly / Wyndham Heaven",
+  "owner_sign": "✝️🧿🪬",
+  "assistant_sign": "3️⃣🧿5️⃣",
+  "dry_run": true,
+  "phase": "SAFE_HOLD",
+  "market_regime": "NEUTRAL",
+  "health": "OK",
+  "ready": false,
+  "notes": "Dry desk holding pattern — no live orders, no anomalies.",
+  "signals": {
+    "liquidity": "stable",
+    "spread_bps": 4.2,
+    "session": "pre_open"
+  }
+}

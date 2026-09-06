@@ -1,0 +1,20 @@
+{
+  "desk_id": "morning-light-01",
+  "timestamp": "2026-09-06T09:10:00Z",
+  "operator": "elghaly / Wyndham Heaven",
+  "owner_sign": "✝️🧿🪬",
+  "assistant_sign": "3️⃣🧿5️⃣",
+  "dry_run": true,
+  "phase": "ACTIVE",
+  "market_regime": "SHORT",
+  "health": "OK",
+  "ready": false,
+  "go_no_go_prompt": "SHORT regime detected on dry desk — reply ENGAGE or STAND DOWN.",
+  "notes": "Bearish breadth and negative gamma context — stance confirmation needed.",
+  "signals": {
+    "liquidity": "thinning",
+    "spread_bps": 7.8,
+    "session": "mid_morning",
+    "breadth": -0.62
+  }
+}
