@@ -1,0 +1,23 @@
+{
+  "desk_id": "morning-light-01",
+  "timestamp": "2026-09-06T09:22:00Z",
+  "operator": "elghaly / Wyndham Heaven",
+  "owner_sign": "✝️🧿🪬",
+  "assistant_sign": "3️⃣🧿5️⃣",
+  "dry_run": true,
+  "phase": "HALTED",
+  "market_regime": "NEUTRAL",
+  "health": "FAULT",
+  "ready": false,
+  "fault": {
+    "code": "EXEC_BRIDGE_TIMEOUT",
+    "summary": "Real fault: execution bridge heartbeat missed for 90s on dry desk.",
+    "recommended_action": "Acknowledge alert, verify bridge process, restart mock lane before GO.",
+    "since": "2026-09-06T09:20:30Z"
+  },
+  "notes": "Not a dashboard babysit event — this is a genuine operational fault.",
+  "signals": {
+    "bridge_status": "down",
+    "last_heartbeat": "2026-09-06T09:20:30Z"
+  }
+}
