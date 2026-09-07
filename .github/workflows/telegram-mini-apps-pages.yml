@@ -12,10 +12,11 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  actions: write
 
 concurrency:
   group: telegram-mini-apps-pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   deploy:
@@ -28,18 +29,27 @@ jobs:
 
       - name: Prepare Pages artifact
         run: |
-          mkdir -p _site/garden-angel _site/bot-350 _site/shared
-          cp telegram-mini-apps/garden-angel/index.html _site/garden-angel/
+          mkdir -p _site/bot-350 _site/shared
           cp telegram-mini-apps/bot-350/index.html _site/bot-350/
           cp telegram-mini-apps/shared/style.css _site/shared/
-          cp telegram-mini-apps/.nojekyll _site/
+          touch _site/.nojekyll
+          test -f _site/bot-350/index.html
+          test -f _site/shared/style.css
+          ls -la _site _site/bot-350 _site/shared
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
         with:
           enablement: true
 
-      - uses: actions/upload-pages-artifact@v3
+      - name: Delete stale github-pages artifact from previous attempts
+        uses: geekyeggo/delete-artifact@v5
+        with:
+          name: github-pages
+          failOnError: false
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
           path: _site
 
