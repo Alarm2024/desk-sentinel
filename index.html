@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#07090f" />
+  <title>Garden Angel Desk</title>
+  <style>
+    :root { font-family: system-ui, sans-serif; color: #e8eefc; background: #07090f; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; padding: 1.25rem 1rem 2rem; max-width: 480px; margin-inline: auto;
+      background: radial-gradient(ellipse at top, #152038 0%, #07090f 55%); }
+    .owner { text-align: center; margin: 0; font-size: 1.35rem; letter-spacing: .08em; }
+    h1 { text-align: center; margin: .35rem 0 0; letter-spacing: .08em; font-size: clamp(1.5rem, 6vw, 2rem); }
+    .tag { text-align: center; color: #8b97b3; margin: .4rem 0 1.2rem; font-size: .92rem; }
+    .hold { display: grid; place-items: center; width: min(70vw, 220px); height: min(70vw, 220px);
+      margin: 0 auto 1rem; border-radius: 50%; border: 0; cursor: pointer; color: #5cffb0;
+      background: radial-gradient(circle at 35% 30%, #1d2b44, #0b1220 70%);
+      box-shadow: 0 0 0 3px #1e2d48, 0 0 40px rgba(92,255,176,.35); font-weight: 900;
+      letter-spacing: .14em; font-size: 1.6rem; -webkit-tap-highlight-color: transparent; }
+    .hold:active { transform: scale(.94); }
+    .hold span { display:block; font-size:.7rem; color:#8b97b3; letter-spacing:.18em; margin-top:.35rem; font-weight:600; }
+    .hint { text-align:center; color:#8b97b3; font-size:.9rem; min-height:1.2em; }
+    .feed { display:flex; flex-direction:column; gap:.75rem; margin-top:1rem; }
+    .card { background:#121826; border:1px solid #243049; border-radius:14px; padding:.9rem 1rem;
+      font-family: ui-monospace, Menlo, Consolas, monospace; font-size:.82rem; line-height:1.45;
+      white-space:pre-wrap; animation: pop .25s ease; }
+    .soft { color:#5cffb0; } .mid { color:#ffd166; } .never { color:#fb7185; } .status { color:#7dd3fc; font-weight:700; }
+    @keyframes pop { from { opacity:0; transform: translateY(8px);} to { opacity:1; transform:none;} }
+    footer { text-align:center; color:#8b97b3; font-size:.78rem; margin-top:2rem; }
+    .bot { font-size:1.2rem; margin-top:.4rem; }
+  </style>
+</head>
+<body>
+  <p class="owner">✝️🧿🪬</p>
+  <h1>GARDEN ANGEL DESK</h1>
+  <p class="tag">dry-first Solana desk · KEEP hunts · 350 learns · eyes before send</p>
+  <button type="button" class="hold" id="pulse">PULSE<span>tap me</span></button>
+  <p class="hint" id="hint">Dry desk eyes. SAFE HOLD until CLEAR+/go.</p>
+  <section class="feed" id="feed" aria-live="polite"></section>
+  <footer>
+    <p>Burning Token · mock eyes · no wallet · no live send</p>
+    <p class="bot">3️⃣🧿5️⃣</p>
+  </footer>
+  <script>
+    const lines = [
+      ["KEEP dry", "Titan hop-1 working · quotes flowing", "HTTP RPC soft · fallback OK", "👀 SAFE HOLD · math short of gate"],
+      ["350 dry", "USDC-SOL tape 40–250", "net under worst-bound", "👀 SHORT · flash MarginFi sim only"],
+      ["35 eyes", "نشرة / scout1–3 on demand", "Guide OFF", "👀 guides only · never go"],
+      ["Desk rule", "no shared TG / keys / Triton with KEEP", "feed.redis_url OFF forever", "⛔ live send refused until CLEAR+/go"],
+    ];
+    let n = 0;
+    const feed = document.getElementById("feed");
+    const hint = document.getElementById("hint");
+    document.getElementById("pulse").onclick = () => {
+      n += 1;
+      const L = lines[(n - 1) % lines.length];
+      const el = document.createElement("article");
+      el.className = "card";
+      el.innerHTML = [
+        "✝️🧿🪬", "",
+        `<span class="status">/desk · pulse #${n}</span>`,
+        L[0],
+        `<span class="mid">${L[1]}</span>`,
+        L[2],
+        `<span class="soft">${L[3]}</span>`,
+        `<span class="never">⛔ live send: refused (dry desk)</span>`,
+        "CLEAR? wait · SHORT? soft · HOLD? yes",
+        "", "3️⃣🧿5️⃣"
+      ].join("\n");
+      feed.prepend(el);
+      while (feed.children.length > 6) feed.lastChild.remove();
+      hint.textContent = n < 3 ? "Again — show the desk layers." : "Ready for judges. Still dry.";
+      if (navigator.vibrate) navigator.vibrate(15);
+    };
+  </script>
+</body>
+</html>
