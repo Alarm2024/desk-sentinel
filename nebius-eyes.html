@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#07090f" />
+  <title>Morning Light Nebius Eyes</title>
+  <style>
+    :root { font-family: system-ui, sans-serif; color: #e8eefc; background: #07090f; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; padding: 1.25rem 1rem 2rem; max-width: 640px; margin-inline: auto;
+      background: radial-gradient(ellipse at top, #152038 0%, #07090f 55%); }
+    .owner { text-align: center; margin: 0; font-size: 1.35rem; letter-spacing: .08em; }
+    h1 { text-align: center; margin: .35rem 0 0; font-size: clamp(1.4rem, 5vw, 1.85rem); letter-spacing: .06em; }
+    .tag { text-align: center; color: #8b97b3; margin: .4rem 0 1rem; font-size: .9rem; }
+    label { display: block; color: #8b97b3; font-size: .85rem; margin-bottom: .35rem; }
+    textarea { width: 100%; min-height: 160px; padding: .75rem; border-radius: 12px; border: 1px solid #243049;
+      background: #121826; color: #e8eefc; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .82rem;
+      resize: vertical; }
+    .row { display: flex; gap: .5rem; flex-wrap: wrap; margin: .75rem 0; }
+    button, select { border-radius: 10px; border: 1px solid #243049; background: #1a2438; color: #e8eefc;
+      padding: .55rem .9rem; font-size: .88rem; cursor: pointer; }
+    button.primary { background: #2563eb; border-color: #3b82f6; font-weight: 600; }
+    button:active { transform: scale(.98); }
+    pre { background: #121826; border: 1px solid #243049; border-radius: 14px; padding: 1rem; margin: 1rem 0 0;
+      font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .82rem; line-height: 1.5;
+      white-space: pre-wrap; animation: pop .25s ease; }
+    .bot { text-align: center; font-size: 1.2rem; margin-top: 1.5rem; color: #8b97b3; }
+    footer { text-align: center; color: #6b7280; font-size: .75rem; margin-top: .5rem; }
+    @keyframes pop { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  </style>
+</head>
+<body>
+  <p class="owner">✝️🧿🪬</p>
+  <h1>MORNING LIGHT NEBIUS EYES</h1>
+  <p class="tag">Dry bot Exam/card → Test result · Signal · Problem · Needs · Alarms · Recommend</p>
+
+  <label for="card">Exam / card text (dry desk, English only)</label>
+  <textarea id="card" placeholder="Paste dry bot exam card text here…"></textarea>
+
+  <div class="row">
+    <select id="mode" aria-label="Analysis mode">
+      <option value="auto">auto (live if server has key)</option>
+      <option value="demo" selected>demo (offline rules)</option>
+      <option value="live">live (Nebius Token Factory)</option>
+    </select>
+    <button type="button" id="sample">Load sample</button>
+    <button type="button" class="primary" id="analyze">Analyze</button>
+  </div>
+
+  <pre id="out" hidden aria-live="polite"></pre>
+  <p class="bot">3️⃣🧿5️⃣</p>
+  <footer>Nebius×NVIDIA Global AI Hackathon · no live trading · MIT</footer>
+
+  <script>
+    const SAMPLE = `/desk · pulse #1
+KEEP dry
+Titan hop-1 working · quotes flowing
+HTTP RPC soft · fallback OK
+👀 SAFE HOLD · math short of gate
+Phase: SAFE_HOLD · dry_run: true
+Liquidity stable · spread 4.2 bps · pre_open`;
+
+    const DEMO_RULES = [
+      { test: t => /fault|bridge.*timeout|EXEC_BRIDGE/i.test(t), fields: {
+        test_result: "FAIL — operational fault on dry desk",
+        signal: "Bridge heartbeat missing · execution lane halted",
+        problem: "EXEC_BRIDGE_TIMEOUT — mock bridge down 90s+",
+        needs: "Human ack · verify bridge process · restart dry lane",
+        alarms: "CRITICAL — do not proceed until bridge restored",
+        recommend: "Pause all dry sends. Restart bridge mock, re-run exam card."
+      }},
+      { test: t => /SHORT|bearish/i.test(t), fields: {
+        test_result: "WARN — SHORT regime on dry desk",
+        signal: "Bearish breadth · thinning liquidity · wider spreads",
+        problem: "Regime shift detected — stance not confirmed",
+        needs: "Operator review of SHORT playbook (dry sim only)",
+        alarms: "MEDIUM — elevated slippage risk in sim",
+        recommend: "Stay in dry sim. Log stance. No live engagement."
+      }},
+      { test: t => /SAFE HOLD|holding pattern|no anomalies/i.test(t), fields: {
+        test_result: "PASS — SAFE HOLD dry watch",
+        signal: "Neutral regime · stable liquidity · pre-open session",
+        problem: "None — routine dry holding pattern",
+        needs: "Continue silent watch · no operator action",
+        alarms: "NONE",
+        recommend: "Keep monitoring. Re-pulse exam card on next tick."
+      }},
+    ];
+
+    function demoAnalyze(text) {
+      for (const rule of DEMO_RULES) {
+        if (rule.test(text)) return rule.fields;
+      }
+      return {
+        test_result: "REVIEW — exam card parsed (demo mode)",
+        signal: text.split("\n").filter(Boolean).slice(0, 3).join(" · ").slice(0, 120),
+        problem: "Unclassified card — human skim advised",
+        needs: "Run CLI with NEBIUS_API_KEY for NVIDIA Nemotron",
+        alarms: "INFO — demo rules only",
+        recommend: "python -m desk_sentinel.nebius_eyes analyze --mode live"
+      };
+    }
+
+    function formatReport(fields, note) {
+      const lines = [
+        "✝️🧿🪬", "",
+        "Morning Light Nebius Eyes",
+        "────────────────────────────────",
+        `Test result · ${fields.test_result}`,
+        `Signal · ${fields.signal}`,
+        `Problem · ${fields.problem}`,
+        `Needs · ${fields.needs}`,
+        `Alarms · ${fields.alarms}`,
+        `Recommend · ${fields.recommend}`,
+      ];
+      if (note) lines.push("", note);
+      lines.push("", "3️⃣🧿5️⃣");
+      return lines.join("\n");
+    }
+
+    async function analyze() {
+      const text = document.getElementById("card").value.trim();
+      const mode = document.getElementById("mode").value;
+      const out = document.getElementById("out");
+      if (!text) { out.hidden = false; out.textContent = "Paste exam card text first."; return; }
+
+      out.hidden = false;
+      out.textContent = "Analyzing…";
+
+      try {
+        const res = await fetch("/api/analyze", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ text, mode }),
+        });
+        if (res.ok) {
+          const data = await res.json();
+          out.textContent = data.report;
+          return;
+        }
+      } catch (_) { /* fall through to browser demo */ }
+
+      const fields = demoAnalyze(text);
+      const note = mode === "live"
+        ? "Browser fallback: start server with python -m desk_sentinel.nebius_eyes serve"
+        : "Mode: demo (browser rules) · use serve + NEBIUS_API_KEY for Nemotron";
+      out.textContent = formatReport(fields, note);
+    }
+
+    document.getElementById("sample").onclick = () => {
+      document.getElementById("card").value = SAMPLE;
+    };
+    document.getElementById("analyze").onclick = analyze;
+  </script>
+</body>
+</html>
