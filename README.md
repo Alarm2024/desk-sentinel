@@ -1,8 +1,10 @@
 # Morning Light Desk Sentinel
 
-**Agents for Humans — Professional Agents track** · AWS Devpost · due Sep 14, 2026
-
 Owner ✝️🧿🪬 · Assistant 3️⃣🧿5️⃣ · **elghaly / Wyndham Heaven**
+
+> **Nebius×NVIDIA Global AI Hackathon:** see **[Morning Light Nebius Eyes](README-NEBIUS-EYES.md)** — dry bot Exam/card → structured desk readout via **Nebius Token Factory** + **NVIDIA Nemotron**. Quick run: `python -m desk_sentinel.nebius_eyes demo`
+
+**Agents for Humans — Professional Agents track** · AWS Devpost · due Sep 14, 2026
 
 A [Strands Agents SDK](https://strandsagents.com/) agent that quietly monitors **dry desk** status from mock JSON fixtures and **only notifies the human when a real decision is needed** — CLEAR go/no-go, SHORT market stance, or a genuine fault. Not a babysit dashboard.
 
@@ -104,6 +106,11 @@ fixtures/               # Mock desk status JSON
 
 MIT — see [LICENSE](LICENSE).
 
-## Hackathon
+## Hackathons
 
-Built for **AWS Devpost — Agents for Humans** (Professional Agents track). Repository: [Alarm2024/desk-sentinel](https://github.com/Alarm2024/desk-sentinel).
+| Event | Entry | Docs |
+| --- | --- | --- |
+| **Nebius×NVIDIA Global AI Hackathon** | Morning Light Nebius Eyes | [README-NEBIUS-EYES.md](README-NEBIUS-EYES.md) |
+| **AWS Devpost — Agents for Humans** | Morning Light Desk Sentinel | this README |
+
+Repository: [Alarm2024/desk-sentinel](https://github.com/Alarm2024/desk-sentinel)
