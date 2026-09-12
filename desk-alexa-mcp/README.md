@@ -23,11 +23,21 @@ Streamable HTTP MCP server (spec **2025-11-25+**) that Alexa+ agents and other M
 
 3️⃣🧿5️⃣
 
+## Repository
+
+Self-contained hackathon project. Intended standalone repo: **`Alarm2024/desk-alexa-mcp`**.
+
+Until that repo is published, clone from this monorepo folder:
+
+```bash
+git clone https://github.com/Alarm2024/desk-sentinel.git
+cd desk-sentinel/desk-alexa-mcp
+```
+
 ## Quick start
 
 ```bash
-git clone https://github.com/Alarm2024/desk-alexa-mcp.git
-cd desk-alexa-mcp
+# from repo root (desk-alexa-mcp/ or desk-sentinel/desk-alexa-mcp/)
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
