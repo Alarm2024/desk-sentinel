@@ -22,7 +22,7 @@ Powered by **[Nebius Token Factory](https://nebius.com/services/token-factory)**
 
 ### $25 Nebius credits (Devpost)
 
-Use activation code **`NEBIUS-DEVPOST-GLOBAL26`** on the hackathon credits form linked from [Devpost](https://nebius-global-ai-hackathon.devpost.com/) to claim **$25** in Nebius Token Factory credits.
+Use activation code **`<ACTIVATION_CODE>`** on the hackathon credits form linked from [Devpost](https://nebius-global-ai-hackathon.devpost.com/) to claim **$25** in Nebius Token Factory credits.
 
 ## Quick start
 
